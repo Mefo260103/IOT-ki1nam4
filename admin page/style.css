@@ -1,0 +1,311 @@
+@import url('http://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+:root {
+    --blue: #287bff;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--grey);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 58px;
+}
+
+.navigation ul {
+    margin-top: 20px;
+}
+
+.navigation ul li {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white);
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.navigation ul li:hover a {
+    background: var(--white);
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    margin-right: 20px;
+    font-size: 1.75em;
+}
+
+.navigation ul li a .title {
+    font-size: 1.2em;
+    white-space: nowrap;
+}
+
+.main {
+    position: relative;
+    width: calc(100% - 300px);
+    left: 300px;
+    padding: 20px;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+.main.active {
+    width: calc(100% - 58px);
+    left: 120px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.topbar .toggle {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.topbar .search {
+    flex: 1;
+    margin: 0 20px;
+    position: relative;
+}
+
+.topbar .search input {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 30px;
+    border: 1px solid var(--black2);
+}
+
+.topbar .search ion-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}
+
+.topbar .img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.cardbox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.cardbox .card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cardbox .card:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.cardbox .card:hover .Text,
+.cardbox .card:hover .Stat,
+.cardbox .card:hover .Icon {
+    color: var(--white);
+}
+
+.cardbox .card .Text {
+    font-size: 1.2em;
+    color: var(--black2);
+}
+
+.cardbox .card .Stat {
+    font-size: 2.5em;
+    color: var(--blue);
+}
+
+.cardbox .card .Icon {
+    font-size: 3.5em;
+    color: var(--black2);
+}
+
+/* Grid container chính chứa phần chart và switch */
+.chartnswitch {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Chart chiếm 2 phần, switch chiếm 1 phần */
+    grid-template-rows: auto; /* Để tự động xác định chiều cao */
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Phần chart - chiều dài gấp đôi phần card */
+.chartnswitch .chart {
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    min-height: 1000px; /* Đặt chiều cao gấp đôi so với card */
+    width: 100%;
+}
+
+/* Phần switch - chiều dài bằng với phần card */
+.chartnswitch .switch {
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    min-height: 500px; /* Chiều cao bằng với một phần card */
+    width: 100%;
+}
+
+/* Container chứa các switch */
+.switch-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 10px;
+}
+
+.switch-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+.slider {
+    position: relative;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    transition: 0.4s;
+    border-radius: 50px;
+    font-size: 1em;
+}
+
+/* Căn chỉnh icon và nhãn của switch */
+.switch-slider ion-icon {
+    font-size: 1em;
+    margin-right: 10px;
+    color: var(--blue);
+}
+
+.switch-label {
+    font-size: 1em;
+    font-weight: bold;
+    flex: 1;
+}
+
+.switch-slider input {
+    display: none; /* Ẩn input checkbox */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 42px;
+    width: 42px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+
+/* Chữ "ON" và "OFF" */
+.slider .on, .slider .off {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.5em; /* Điều chỉnh cỡ chữ ON/OFF bên trong slider */
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+}
+
+.slider .on {
+    left: 10px;
+    opacity: 0;
+}
+
+.slider .off {
+    right: 10px;
+}
+
+/* Khi input được chọn, thay đổi trạng thái */
+input:checked + .slider {
+    background-color: green; /* Màu nền khi "ON" */
+}
+
+input:checked + .slider:before {
+    transform: translateX(50px); /* Di chuyển slider khi bật */
+}
+
+/* Hiển thị chữ "ON" khi chuyển sang trạng thái "ON" */
+input:checked + .slider .on {
+    opacity: 1;
+}
+
+input:checked + .slider .off {
+    opacity: 0;
+}
+
+/* Đặt nút switch nằm bên phải */
+.switch-slider .slider {
+    margin-left: auto;
+}
+
+

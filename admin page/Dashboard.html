@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+	/* Điều chỉnh thêm CSS nếu cần */
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="navigation">
+			<ul>
+				<li>
+					<a href="#">
+						<span class="icon"><ion-icon name="compass-outline"></ion-icon></span>
+						<span class="title">IOT Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="Dashboard.html">
+						<span class="icon"><ion-icon name="podium-outline"></ion-icon></span>
+						<span class="title">Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="Data_sensor.html">
+						<span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
+						<span class="title">Data Sensor</span>
+					</a>
+				</li>
+				<li>
+					<a href="Action_record.html">
+						<span class="icon"><ion-icon name="aperture-outline"></ion-icon></span>
+						<span class="title">Action Record</span>
+					</a>
+				</li>
+				<li>
+					<a href="Profile.html">
+						<span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+						<span class="title">Profile</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="topbar">
+				<div class="toggle">
+					<ion-icon name="menu-outline"></ion-icon>
+				</div>
+				<div class="search">
+					<label>
+						<input type="text" placeholder="Search here">
+						<ion-icon name="search-outline"></ion-icon>		
+					</label>
+				</div>
+				<div class="img">
+					<img src="010a.JPG">
+				</div>
+			</div>
+
+			<!--card-->
+			<div class="cardbox">
+				<div class="card">
+					<div>
+						<div class="Text">Temperature</div>
+						<div class="Stat">30 <span>&#8451;</span></div>
+					</div>
+					<div class="Icon">
+						<ion-icon name="thermometer-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="card">
+					<div>
+						<div class="Text">Humidity</div>
+						<div class="Stat">50 %</div>
+					</div>
+					<div class="Icon">
+						<ion-icon name="water-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="card">
+					<div>
+						<div class="Text">Light</div>
+						<div class="Stat">200 LX</div>
+					</div>
+					<div class="Icon">
+						<ion-icon name="sunny-outline"></ion-icon>
+					</div>
+				</div>
+			</div>
+			<div class="chartnswitch">
+				<div class="chart">
+					<canvas id="myChart"></canvas>
+				</div>
+				<div class="switch">
+					<h1>Switch Area</h1>
+					<div class="switch-container">
+						<label class="switch-slider">
+							<span class="switch-label">Fan 1</span>
+							<input type="checkbox" id="switch1">
+							<span class="slider">
+								<span class="on">ON</span>
+								<span class="off">OFF</span>
+							</span>
+						</label>
+						<label class="switch-slider">
+							<span class="switch-label">Fan 2</span>
+							<input type="checkbox" id="switch2">
+							<span class="slider">
+								<span class="on">ON</span>
+								<span class="off">OFF</span>
+							</span>
+						</label>
+						<label class="switch-slider">
+							<span class="switch-label">Lightbulb</span>
+							<input type="checkbox" id="switch3">
+							<span class="slider">
+								<span class="on">ON</span>
+								<span class="off">OFF</span>
+							</span>
+						</label>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>	
+	<script>
+		let toggle = document.querySelector('.toggle');
+		let navigation = document.querySelector('.navigation');
+		let main = document.querySelector('.main');	
+
+		toggle.onclick = function(){
+    		navigation.classList.toggle('active')
+    		main.classList.toggle('active')
+		}
+
+
+		const ctx = document.getElementById('myChart').getContext('2d');
+		const myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5', 'Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10'],
+				datasets: [{
+					label: 'Temperature (°C)',
+					data: [30, 31, 29, 25, 28, 32, 35, 39, 40, 42],
+					borderColor: 'rgb(255, 99, 132)',
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					fill: false
+				}, {
+					label: 'Humidity (%)',
+					data: [50, 52, 49, 45, 43, 40, 38, 35, 34, 32],
+					borderColor: 'rgb(54, 162, 235)',
+					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					fill: false
+				}, {
+					label: 'Light (LX)',
+					data: [200, 210, 190, 200, 220, 230, 245, 250, 260, 280],
+					borderColor: 'rgb(255, 205, 86)',
+					backgroundColor: 'rgba(255, 205, 86, 0.2)',
+					fill: false
+				}]
+			},
+			options: {
+				responsive: true,
+				scales: {
+					y: {
+						beginAtZero: true,
+						ticks: {
+							font: {
+								size: 16 // Kích cỡ chữ cho trục Y
+							}
+						}
+					},
+					x: {
+						ticks: {
+							font: {
+								size: 16 // Kích cỡ chữ cho trục X
+							}
+						}
+					}
+				},
+				plugins: {
+					legend: {
+						labels: {
+							font: {
+								size: 18 // Kích cỡ chữ cho nhãn trong phần chú thích
+							}
+						}
+					},
+					title: {
+						display: true,
+						text: 'Data Sensor Chart',
+						font: {
+							size: 20 // Kích cỡ chữ cho tiêu đề biểu đồ
+						}
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>
