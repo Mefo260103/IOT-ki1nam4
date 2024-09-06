@@ -104,28 +104,6 @@ body {
     cursor: pointer;
 }
 
-.topbar .search {
-    flex: 1;
-    margin: 0 20px;
-    position: relative;
-}
-
-.topbar .search input {
-    width: 100%;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 30px;
-    border: 1px solid var(--black2);
-}
-
-.topbar .search ion-icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-}
-
 .topbar .img img {
     width: 40px;
     height: 40px;
@@ -134,50 +112,32 @@ body {
     cursor: pointer;
 }
 
-.cardbox {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 20px;
-}
-
-.cardbox .card {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+.table-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
+    margin-bottom: 20px;
 }
 
-.cardbox .card:hover {
-    background: var(--blue);
-    color: var(--white);
+.table-actions select,
+.table-actions input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
 }
 
-.cardbox .card:hover .Text,
-.cardbox .card:hover .Stat,
-.cardbox .card:hover .Icon {
-    color: var(--white);
+.table-actions input {
+    width: 200px;
 }
 
-.cardbox .card .Text {
-    font-size: 1.2em;
-    color: var(--black2);
+.table-actions select:focus,
+.table-actions input:focus {
+    outline: none;
+    border-color: var(--blue);
 }
 
-.cardbox .card .Stat {
-    font-size: 2.5em;
-    color: var(--blue);
-}
 
-.cardbox .card .Icon {
-    font-size: 3.5em;
-    color: var(--black2);
-}
 
 .table-container {
     background: var(--white);
@@ -233,4 +193,65 @@ table tbody tr:nth-child(even) {
 .pagination span {
     font-size: 1.2em;
     margin: 0 10px;
+}
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.page-buttons button {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.page-buttons button:hover {
+    background: var(--black1);
+}
+
+/* CSS cho phần input và button */
+#jumpToPage {
+    width: 100px; /* Độ rộng của input */
+    padding: 10px; /* Độ đệm bên trong */
+    font-size: 1em; /* Kích thước font chữ */
+    text-align: center; /* Canh giữa số bên trong */
+    border: 1px solid var(--grey); /* Viền */
+    border-radius: 5px; /* Góc bo tròn */
+    margin-right: 10px; /* Khoảng cách bên phải */
+}
+
+#jumpToPage:focus {
+    outline: none;
+    border-color: var(--blue); /* Đổi màu viền khi focus */
+}
+
+button {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px; /* Kích thước button */
+    font-size: 1em; /* Kích thước chữ */
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--black1);
+}
+
+.pagination,
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }

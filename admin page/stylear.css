@@ -103,28 +103,6 @@ body {
     cursor: pointer;
 }
 
-.topbar .search {
-    flex: 1;
-    margin: 0 20px;
-    position: relative;
-}
-
-.topbar .search input {
-    width: 100%;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 30px;
-    border: 1px solid var(--black2);
-}
-
-.topbar .search ion-icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-}
-
 .topbar .img img {
     width: 40px;
     height: 40px;
@@ -179,79 +157,122 @@ body {
 }
 
 .table-container {
-    padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
     background: var(--white);
-    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    font-size: 1.1em;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+table thead tr {
+    background: var(--blue);
+    color: var(--white);
 }
 
 table th, table td {
     padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--grey);
 }
 
-table th {
-    background-color: var(--blue);
-    color: var(--white);
+table tbody tr:nth-child(even) {
+    background: var(--grey);
 }
 
-.pagination {
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination, .page-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
 }
 
-.pagination button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    cursor: pointer;
+.pagination button, .page-buttons button {
+    background: var(--blue);
+    color: var(--white);
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover, .page-buttons button:hover {
+    background: var(--black1);
+}
+
+/* CSS cho phần input và button */
+#jumpToPage {
+    width: 100px; /* Độ rộng của input */
+    padding: 10px; /* Độ đệm bên trong */
+    font-size: 1em; /* Kích thước font chữ */
+    text-align: center; /* Canh giữa số bên trong */
+    border: 1px solid var(--grey); /* Viền */
+    border-radius: 5px; /* Góc bo tròn */
+    margin-right: 10px; /* Khoảng cách bên phải */
+    border-color: var(--black1);
+}
+
+#jumpToPage:focus {
+    outline: none;
+    border-color: var(--blue); /* Đổi màu viền khi focus */
+}
+
+button {
     background-color: var(--blue);
     color: var(--white);
-    border-radius: 5px;
-}
-
-.pagination button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.pagination #pageInfo {
-    font-size: 1.2em;
-}
-.page-buttons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.page-buttons button {
-    padding: 8px 12px;
-    margin: 5px;
+    border: none;
+    padding: 10px 20px; /* Kích thước button */
+    font-size: 1em; /* Kích thước chữ */
     cursor: pointer;
-    border: 1px solid #287bff;
-    background-color: #fff;
-    color: #287bff;
-    font-size: 14px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
-.page-buttons button.active {
-    background-color: #287bff;
-    color: #fff;
+button:hover {
+    background-color: var(--black1);
+}
+/* CSS cho dropdown và thanh tìm kiếm */
+.search-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.page-buttons button:hover {
-    background-color: #287bff;
-    color: #fff;
+#filterDropdown {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--grey);
+    font-size: 1em;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid var(--grey);
+    font-size: 1em;
+}
+
+#searchInput:focus, #filterDropdown:focus {
+    outline: none;
+    border-color: var(--blue);
 }
